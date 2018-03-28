@@ -4,7 +4,7 @@ import controller.ShipData.Orientation;
 import controller.commands.*;
 
 import javafx.application.Application;
-
+import model.Board;
 import model.Location;
 
 import java.io.IOException;
@@ -27,7 +27,7 @@ public class BattleShip implements Observer<ShipData> {
 
     private int shipCount = 0;
     private int sunkShips = 0;
-    private ModelActions theBoard;// Instance of your ModelActions implementation
+    private ModelActions theBoard = new Board();
     private ConsoleWriter console;
     private boolean myTurn = true;
     private Thread commsThread = null;

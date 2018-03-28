@@ -12,5 +12,5 @@ public interface Response {
     * 
     * @param game Reference to the controller
     */
-   void execute(controller.BattleShip game);
+   void execute (controller.BattleShip game);
 }

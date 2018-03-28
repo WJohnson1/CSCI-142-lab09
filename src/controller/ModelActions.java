@@ -19,7 +19,7 @@ public interface ModelActions {
     * @param columns The number of columns on the target/player pane
     * @param numShips The number of ships the player has
     */
-    void createModel(int rows, int columns, int numShips);
+    void createModel (int rows, int columns, int numShips);
 
    /**
     * Register for updates from a single target model site
@@ -28,7 +28,7 @@ public interface ModelActions {
     *            be observed.
     * @param ob The observer that is registering
     */
-   void registerForTargetUpdates(model.Location loc, Observer<Boolean> ob);
+   void registerForTargetUpdates (model.Location loc, Observer<Boolean> ob);
 
    /**
     * Register for chagnes to the ship's status. Ship status includes when
@@ -36,7 +36,7 @@ public interface ModelActions {
     *
     * @param ob The observer that is registering
     */
-   void registerForShipChanges(Observer<ShipData> ob);
+   void registerForShipChanges (Observer <ShipData> ob);
 
    /**
     * Adds a ship to the model. Notifies any ship observers that a ship
@@ -47,7 +47,7 @@ public interface ModelActions {
     * @param loc The location of the ship's upper leftmost point
     * @param or The ships orientation (HORIZONTAL/VERTICAL)
     */
-   void addShip(String name, int size, model.Location loc, ShipData.Orientation or);
+   void addShip (String name, int size, model.Location loc, ShipData.Orientation or);
 
    /**
     * Marks a target site
@@ -55,7 +55,7 @@ public interface ModelActions {
     * @param loc The location to mark
     * @param wasHit True if the site was a ship hit, false if it was a miss
     */
-   void markTarget(model.Location loc, boolean wasHit);
+   void markTarget (model.Location loc, boolean wasHit);
 
    /**
     * Checks to see if an attack was a hit. If it was, notify status observers
@@ -64,6 +64,6 @@ public interface ModelActions {
     * @param loc Location of the attack
     * @return True is attack was a hit, false if it was a miss
     */
-   boolean checkIfAttackHit(model.Location loc);
+   boolean checkIfAttackHit (model.Location loc);
 
 }

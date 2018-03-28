@@ -23,9 +23,8 @@ public class Board implements controller.ModelActions{
    private Target targetInfo;
 
    private Map<Location, ShipModel> shipMap = new HashMap <>(); 
+   private Set<Observer<ShipData>> observers = new HashSet<> ();
 
-   // TODO: Create list of observers
- 
    /**
     * Creates the boards data. This is a basically a deferred
     * constructor that is enforced by the interface.
@@ -66,17 +65,19 @@ public class Board implements controller.ModelActions{
     * @param ob Observer that is being registered
     */
    public void registerForShipChanges (Observer<ShipData> ob) {
-      // TODO: Add observer to list of observers
+      observers.add (ob);
    }
    
    /**
     * Notifies observers when a ships status has changed.
     * Status is either a ship was added or sunk.
     *
-    * @param ship Ship data for the ship that changed status.
+    * @param ship Ship data for the ship that changed
     */
    public void notifyObservers (ShipModel ship) {
-      // TODO: Notify observers
+      for (Observer<ShipData> o : observers) {
+         o.update (ship);
+      }
    } 
 
    /**
@@ -93,7 +94,7 @@ public class Board implements controller.ModelActions{
 
          for (int i = 0; i < size; i++){
             Location pegLoc;
-            if (or == Orientation.HORIZONTAL) {
+            if (or == ShipData.Orientation.HORIZONTAL) {
                pegLoc = new Location (loc.getRow(), loc.getCol() + i);
             }
             else {

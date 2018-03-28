@@ -13,5 +13,5 @@ public interface Command {
      * @param peer Comm channel to the other player. Used to send the
      *             command to them.
      */
-    void execute(controller.Peer peer);
+    void execute (controller.Peer peer);
 }

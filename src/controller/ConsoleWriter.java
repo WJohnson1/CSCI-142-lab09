@@ -12,5 +12,5 @@ public interface ConsoleWriter {
     *
     * @param text The message to write
     */
-   void write(String text);
+   void write (String text);
 }

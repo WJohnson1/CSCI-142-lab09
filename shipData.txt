@@ -1,0 +1,6 @@
+Carrier 5 5 9 VERTICAL
+Battleship 4 4 3 HORIZONTAL
+Cruiser 3 2 2 VERTICAL
+Submarine 3 7 2 HORIZONTAL
+Destroyer 2 1 8 VERTICAL
+

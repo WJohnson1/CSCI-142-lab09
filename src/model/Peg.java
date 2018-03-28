@@ -19,7 +19,7 @@ public class Peg {
 
    private Color pegColor = Color.NONE;
 
-   // TODO: Create collection of observers
+   private Set<Observer<Boolean>> observers = new HashSet<> ();
 
    /**
     * Set a pegs color.
@@ -37,16 +37,17 @@ public class Peg {
     * @param ob The observer to register
     */
    public void register (Observer<Boolean> ob) {
-      // TODO: Add an observer to the observers collection
+      observers.add (ob);
    }
 
    /**
     * Notifies observers of a color change.
     */
    public void notifyObservers () {
-      // Convert the color to a hit flag to keep the observer
-      // from having to know about Peg.Color.
-      
-      // TODO: Notify all of the observers
+      for (Observer<Boolean> ob : observers) {
+        // Convert the color to a hit flag to keep the observer
+        // from having to know about Peg.Color.
+         ob.update ((pegColor == Color.RED) ? true : false);
+      }
    }
 }

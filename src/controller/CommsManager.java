@@ -75,7 +75,7 @@ public class CommsManager implements Runnable {
      * @return The message from the other player
      */
     public String readResponse () {
-        StringBuilder command = new StringBuilder();
+        java.lang.StringBuilder command = new java.lang.StringBuilder();
         char ch;
 
         do {

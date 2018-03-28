@@ -15,7 +15,7 @@ public class ShipModel extends controller.ShipData {
    private Peg[] pegs;
    private int hitCount;
 
-   // TODO: Create collection of observers
+   private Set<Observer<Integer>> observers = new HashSet<> ();
 
    /**
     * Constructor
@@ -25,13 +25,13 @@ public class ShipModel extends controller.ShipData {
     * @param bow The upper-left corner of the ship
     * @param orient The ship's orientation
     */
-    public ShipModel (String name, int shipSize, Location bow, Orientation orient) {
-        super (name, bow, shipSize, orient);
-        pegs = new Peg [shipSize];
-        for (int i = 0; i < shipSize; i++) {
-           pegs[i] = new Peg ();
-        }
-     }  
+   public ShipModel (String name, int shipSize, Location bow, Orientation orient) {
+      super (name, bow, shipSize, orient);
+      pegs = new Peg [shipSize];
+      for (int i = 0; i < shipSize; i++) {
+         pegs[i] = new Peg ();
+      }
+   }  
 
    /**
     * Registers an observer for updates.
@@ -39,7 +39,7 @@ public class ShipModel extends controller.ShipData {
     * @param ob The observer to be registered
     */
    public void register (Observer<Integer> ob) {
-      // TODO: Add observers to observer collection
+      observers.add (ob);
    }
 
    /**
@@ -48,7 +48,9 @@ public class ShipModel extends controller.ShipData {
     * @param loc The location on the player board that was hit
     */
    public void notifyObservers (int loc) {
-      // TODO: Notify all observers
+      for (Observer<Integer> o : observers) {
+         o.update (loc);
+      }
    }
 
    /**
