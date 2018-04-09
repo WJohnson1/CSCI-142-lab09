@@ -40,6 +40,10 @@ public class BattleShip implements Observer<ShipData> {
         this.console = console;
     }
 
+    public ModelActions getTheBoard() {
+        return theBoard;
+    }
+
     /**
      * Constructor for a Client BattleShip. This version expects
      * a server to be running at the time of creation.
@@ -210,11 +214,11 @@ public class BattleShip implements Observer<ShipData> {
      *
      * @param loc Location that is being attacked.
      */
-    public void attack(Location loc) {
+    public boolean attack(Location loc) {
         // Don't allow attacks if the game has
         // already been won.
         if (sunkShips == shipCount) {
-            return;
+            return false;
         }
 
         // We pressed something so clear the console of the last status.
@@ -226,10 +230,11 @@ public class BattleShip implements Observer<ShipData> {
             // successful and then update the target pane.
             isHit = theBoard.checkIfAttackHit(loc);
             attackResult (isHit, loc);
+            return isHit;
         } else {
             // Need to ask the other player if we hit one of their ships.
             comms.sendCommand(new AttackCmd (loc));
-
+            return true;
         }
     }
 
@@ -269,6 +274,7 @@ public class BattleShip implements Observer<ShipData> {
         }
 
     }
+
 
     /**
      * Method used to add the ships to the model.
