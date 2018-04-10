@@ -31,6 +31,10 @@ public class CommsManager implements Runnable {
         theGame = game;
     }
 
+    public Peer getPeer() {
+        return peer;
+    }
+
     /**
      * Constructor (Server)
      * 

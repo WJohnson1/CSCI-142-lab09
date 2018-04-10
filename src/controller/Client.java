@@ -27,4 +27,5 @@ public class Client extends Peer {
         input = new DataInputStream(sock.getInputStream());
 
     }
+
 }
